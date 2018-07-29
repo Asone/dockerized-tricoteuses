@@ -5,8 +5,11 @@ LABEL NAME=tricoteuses-ui
 LABEL VERSION=1
 
 RUN apk update && apk upgrade && \
-    apk add --no-cache git nodejs npm make g++
+    apk add --no-cache git nodejs make g++ python
 
+RUN git clone https://framagit.org/parlement-ouvert/tricoteuses-ui.git
+WORKDIR tricoteuses-ui
 
-CMD ["npm","start"]
+RUN npm install --verbose
+
 EXPOSE 3000
