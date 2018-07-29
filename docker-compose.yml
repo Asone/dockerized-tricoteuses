@@ -21,11 +21,11 @@ services:
     build: 
       context: ./_provisioning/ui
     ports:
-      3000:3000
+      - 3000:3000
 
   daemon:
     build: 
-      context: ./daemon
+      context: ./_provisioning/daemon
   
-  volumes:
-    pgdata:
+volumes:
+  pgdata:
