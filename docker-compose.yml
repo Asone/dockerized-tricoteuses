@@ -17,15 +17,23 @@ services:
   api:
     build:
       context: ./_provisioning/api
+    depends_on:
+      - db
+
   ui:
     build: 
       context: ./_provisioning/ui
+    depends_on:
+      - db
+      - api
     ports:
       - 3000:3000
 
   daemon:
     build: 
       context: ./_provisioning/daemon
+    depends_on:
+      - db
   
 volumes:
   pgdata:
