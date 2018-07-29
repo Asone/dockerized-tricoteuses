@@ -10,10 +10,10 @@ RUN apk update && apk upgrade && \
 
 
 ADD ./_dumps _dumps/
-WORKDIR _dumps
-RUN wget http://data.senat.fr/data/ameli/ameli.zip  && \
-unzip ameli.zip && \
-mv var/opt/opendata/ameli.sql /_dumps/ 
+#WORKDIR _dumps
+#RUN wget http://data.senat.fr/data/ameli/ameli.zip  && \
+#unzip ameli.zip && \
+#mv var/opt/opendata/ameli.sql /_dumps/ 
 
 # dropdb ameli
 # dropuser opendata
