@@ -11,5 +11,21 @@ Softwares are the following :
  - [ ] [Tricoteuses-api](https://framagit.org/parlement-ouvert/tricoteuses-api) : A graphQl API for requesting database
  - [ ] [Tricoteuses-ui](https://framagit.org/parlement-ouvert/tricoteuses-ui) : Front-end application for exploring data. 
 
- Docker containers here should allow to build environment running those softwares easily. 
+## Current services states
+
+### DB 
+
+DB should be working. On removing the image and rebuilding, db will automatically fetch current data dump available. 
+
+### daemon
+
+Basics of Dockerfile made, not tested. 
+
+### api 
+
+Todo
+
+### ui
+
+Install & build works. Instance not tested.
 
