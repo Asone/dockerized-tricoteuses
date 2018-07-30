@@ -1,7 +1,7 @@
 FROM node:alpine
 
 LABEL AUTHOR="Nelson Herbin <nelson@herbin.info>"
-LABEL NAME=tricoteuses-api
+LABEL NAME=tricoteuses-daemon
 LABEL VERSION=1
 
 
@@ -18,4 +18,6 @@ RUN git clone https://framagit.org/parlement-ouvert/tricoteuses-daemon.git
 WORKDIR tricoteuses-daemon
 
 RUN pip install requests
+RUN pip install psycopg2
+
 
