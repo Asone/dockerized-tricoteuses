@@ -19,7 +19,9 @@ DB should be working. On removing the image and rebuilding, db will automaticall
 
 ### daemon
 
-Basics of Dockerfile made, not tested. 
+Service container seems to run and no exception seems to be thrown at executing python scripts. 
+
+We will have to configure the service in order to automatically process the scripts adequately.
 
 ### api 
 
