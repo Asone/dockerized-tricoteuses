@@ -8,8 +8,11 @@ RUN apk update && apk upgrade && \
     apk add --no-cache git nodejs make g++ python
 
 RUN git clone https://framagit.org/parlement-ouvert/tricoteuses-ui.git
+
 WORKDIR tricoteuses-ui
 
-RUN npm install --verbose
+RUN npm install
 
 EXPOSE 3000
+
+CMD [npm,"start"]
