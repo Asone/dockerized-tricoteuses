@@ -12,3 +12,8 @@ RUN git clone https://framagit.org/parlement-ouvert/tricoteuses-api
 WORKDIR tricoteuses-api
 
 RUN npm install --verbose
+
+# using api port specified in ui config
+EXPOSE 2048 
+
+CMD ["npm","start"]
