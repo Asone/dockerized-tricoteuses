@@ -5,7 +5,7 @@ LABEL NAME=tricoteuses-api
 LABEL VERSION=1
 
 RUN apk update && apk upgrade && \
-    apk add --no-cache git nodejs
+    apk add --no-cache git nodejs bash
 
 RUN git clone https://framagit.org/parlement-ouvert/tricoteuses-api
 
