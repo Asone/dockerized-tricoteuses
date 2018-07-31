@@ -6,7 +6,7 @@ LABEL VERSION=1
 
 
 RUN apk update && apk upgrade && \
-    apk add --no-cache git python python-dev python3 python3-dev \
+    apk add --no-cache git python python-dev python3 python3-dev build-deps gcc musl-dev \
     linux-headers build-base bash git ca-certificates && \ 
     python3 -m ensurepip && \ 
     rm -r /usr/lib/python*/ensurepip && \ 
