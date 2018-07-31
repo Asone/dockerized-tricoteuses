@@ -2,7 +2,6 @@ version: '2.1'
 
 services:
 
-  # postgres database
   db: 
     image: mdillon/postgis:9.6-alpine
     build:
@@ -15,28 +14,39 @@ services:
       POSTGRES_PASSWORD: $DB_PASSWORD
       POSTGRES_USER: $DB_USER
     working_dir: /usr/src/app
-    
+  
+  daemon:
+    build: 
+      context: ./_provisioning/daemon
+    tty: true
+    depends_on:
+      - db
+    volumes: 
+      - ./_data:/tricoteuses-daemon/data
+
   api:
     build:
       context: ./_provisioning/api
+    command: bash
+    volumes: 
+      - ./_data:/tricoteuses-api/data
     depends_on:
       - db
+      - daemon
 
   ui:
     build: 
       context: ./_provisioning/ui
+    command: bash
     depends_on:
       - db
       - api
     ports:
       - 3000:3000
+    volumes: 
+      - ./_data/:/data
 
-  daemon:
-    build: 
-      context: ./_provisioning/daemon
-    depends_on:
-      - db
-  
 volumes:
   pgdata:
   _dumps:
+  _data:
