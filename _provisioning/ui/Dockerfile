@@ -11,6 +11,7 @@ RUN git clone https://framagit.org/parlement-ouvert/tricoteuses-ui.git
 
 WORKDIR tricoteuses-ui
 
+RUN npm i -g react-scripts
 RUN npm install
 RUN npm run prepare
 
