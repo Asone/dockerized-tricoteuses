@@ -48,6 +48,15 @@ services:
     volumes: 
       - ./_data/:/data
 
+  assemblee:
+    build:
+      context: ./_provisioning/an-api
+    command: cargo build
+    volumes:  
+      - ./_data:/data
+    depends_on:
+      - db
+    
 volumes:
   pgdata:
   _dumps:
