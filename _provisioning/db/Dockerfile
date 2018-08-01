@@ -6,6 +6,8 @@ LABEL NAME=tricoteuses-db
 LABEL VERSION=1
 
 RUN apk update && apk upgrade && \
-    apk add --no-cache git wget
+    apk add --no-cache git wget bash
 
 ADD ./_dumps _dumps/
+
+EXPOSE 5432
