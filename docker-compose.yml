@@ -51,9 +51,9 @@ services:
   assemblee:
     build:
       context: ./_provisioning/an-api
-    command: cargo build
+    command: cargo run -p tricoteuses_api_assemblee_open_data_fetcher -- -c Config.toml 
     volumes:  
-      - ./_data:/data
+      - ./_data:/assemble-data/
     depends_on:
       - db
     
