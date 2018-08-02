@@ -200,9 +200,18 @@ Failure: /usr/local/lib/node_modules/bs-platform/lib/ninja.exe
 
 ##### Notes #####
 
-
-
-
 ### an-api 
 
+Failure. Should give a try with a nightly release dockerized image to fix the following error : 
 
+```
+error[E0554]: #![feature] may not be used on the stable release channel
+ --> /Users/herbin/.cargo/registry/src/github.com-1ecc6299db9ec823/pear_codegen-0.0.18/src/lib.rs:1:1
+  |
+1 | #![feature(plugin_registrar, rustc_private, quote)]
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to previous error
+
+For more information about this error, try `rustc --explain E0554`.
+``` 

@@ -11,6 +11,7 @@ RUN git clone https://framagit.org/tricoteuses/tricoteuses-api-assemblee
 
 WORKDIR tricoteuses-api-assemblee
 
+RUN cargo build
 RUN npm install --verbose
 
 # using api port specified in ui config
