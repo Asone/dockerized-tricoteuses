@@ -149,10 +149,7 @@ Failure: /usr/local/lib/node_modules/bs-platform/lib/ninja.exe
 
 `react-scripts` has been tried either globaly as localy. Stacktrace remains. 
 
-
-
-
-#### Without docker docker ####
+#### Without docker ####
 
 ##### Configuration #####
 
@@ -200,18 +197,12 @@ Failure: /usr/local/lib/node_modules/bs-platform/lib/ninja.exe
 
 ##### Notes #####
 
-### an-api 
+### assemblee
 
-Failure. Should give a try with a nightly release dockerized image to fix the following error : 
+`assemblee` service should run fine. 
 
-```
-error[E0554]: #![feature] may not be used on the stable release channel
- --> /Users/herbin/.cargo/registry/src/github.com-1ecc6299db9ec823/pear_codegen-0.0.18/src/lib.rs:1:1
-  |
-1 | #![feature(plugin_registrar, rustc_private, quote)]
-  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+You will need to fetch Parlament data if you deploy on a new environment. You can use `make` command to launch data fetching with 
 
-error: aborting due to previous error
+`make an-data-fetcher` . It will run `docker-compose run assemblee cargo run -p tricoteuses_api_assemblee_open_data_fetcher -- -c Config.toml`.
 
-For more information about this error, try `rustc --explain E0554`.
-``` 
+Run `docker-compose up assemblee` to launch webserver. 
