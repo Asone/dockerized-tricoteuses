@@ -14,7 +14,9 @@ services:
       POSTGRES_PASSWORD: $DB_PASSWORD
       POSTGRES_USER: $DB_USER
     working_dir: /usr/src/app 
-
+    ports:
+      - 5432:5432
+  
   daemon:
     build: 
       context: ./_provisioning/daemon
@@ -51,9 +53,9 @@ services:
   assemblee: 
     build:
       context: ./_provisioning/an-api
-    command: cargo run -p tricoteuses_api_assemblee_open_data_fetcher -- -c Config.toml 
+    command: cargo run -p tricoteuses_api_assemblee -- -c Config.toml -v  
     volumes:  
-      - ./_data:/assemble-data/
+      - ./_data:/assemblee-data/
     depends_on:
       - db
     
