@@ -5,7 +5,7 @@ LABEL NAME=tricoteuses-an-api
 LABEL VERSION=1
 
 RUN apt-get update && \
-apt-get install unzip;
+apt-get install -y unzip graphicsmagick
 
 ENV JQ_VERSION='1.5'
 
