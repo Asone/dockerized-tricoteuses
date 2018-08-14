@@ -53,12 +53,16 @@ services:
   assemblee: 
     build:
       context: ./_provisioning/an-api
+    environment: 
+      - ROCKET_ENV=staging
     command: cargo run -p tricoteuses_api_assemblee -- -c Config.toml -v  
     volumes:  
       - ./_data:/assemblee-data/
     depends_on:
       - db
-    
+    ports: 
+      - 8000:8000
+
 volumes:
   pgdata:
   _dumps:
