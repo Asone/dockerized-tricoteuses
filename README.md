@@ -1,19 +1,67 @@
 # Docker containers for tricoteuses application
 
-This repo is an intent to provide docker containers for tricoteuses application. 
+This repo provides docker containers for tricoteuses applications. 
 
-Tricoteuses is an application of [parlement ouvert](https://framagit.org/parlement-ouvert) which intends to open the data of the french parlement so it can be easily used by contributors. 
+Tricoteuses are a set of software from [parlement ouvert](https://framagit.org/parlement-ouvert) which intends to open the data of the french parlement so it can be easily used by contributors. 
 
-Tricoteuses comes in 3 different softwares interacting through a postgres database. 
+Softwares are the following : 
 
-Softwares are the following :
- - [ ] [Postgres]()
- - [ ] [Tricoteuses-daemon](https://framagit.org/parlement-ouvert/tricoteuses-daemon) : An software for automatic feed our database
+ - [x] [Tricoteuses-api-assemble](): Provides a GraphQL server for data fetched from the french parlament.
+ - [x] [Tricoteuses-api-hatvp](): Provides a GraphQL server for data fetched from the [`Hatvp`]() institution.
+ - [x] [Tricoteuses-api-wikidata](): Provides a GraphQL server for parlamentaries biographic data fetched from [wikidata]()(https://framagit.org/tricoteuses/tricoteuses-api-wikidata).
  - [ ] [Tricoteuses-api](https://framagit.org/parlement-ouvert/tricoteuses-api) : A graphQL API for requesting database
- - [ ] [Tricoteuses-ui](https://framagit.org/parlement-ouvert/tricoteuses-ui) : Front-end application for exploring data. 
- - [ ] A new GraphQL API for specific use with `assemblée nationale` data.
+ - [ ] [Tricoteuses-ui](https://framagit.org/parlement-ouvert/tricoteuses-ui) : Front-end application for exploring data.
+- [ ] [Tricoteuses-daemon](https://framagit.org/parlement-ouvert/tricoteuses-daemon) : feeds the postgres database automatically
 
 ## Current services states
+
+### **[Functional] assemblee (Assemblée Nationale)**
+
+#### Fetch data ###
+
+You will need to fetch Parlament data if you deploy on a new environment. You can use `make` command to launch data fetching with :
+
+```
+make an-data-fetcher
+make an-pics-fetcher
+```
+
+### usage ###
+Run `docker-compose up assemblee` to launch webserver.
+
+A documented graphiQL interface is available at [localhost:8000](http://localhost:8000)
+
+
+### **[Functional] hatvp (Haute autorité de la transparence de la vie publique)**
+
+#### Fetch data ###
+
+You will need to fetch hatvp data if you deploy on a new environment. You can use `make` command to launch data fetching with :
+
+```
+make hatvp-data-fetch
+```
+
+### usage ###
+Run `docker-compose up hatvp` to launch webserver. 
+
+A documented graphiQL interface is available at [localhost:8002](http://localhost:8002)
+
+### **[Functional] Wikidata (Biographic data)**
+
+#### Fetch data ###
+
+You will need to fetch wikidata data if you deploy on a new environment. You can use `make` command to launch data fetching with :
+
+```
+make wikidata-data-fetch
+```
+
+### usage ###
+Run `docker-compose up wikidata` to launch webserver. 
+
+A documented graphiQL interface is available at [localhost:8003](http://localhost:8003)
+
 
 ### DB 
 
@@ -196,13 +244,3 @@ Failure: /usr/local/lib/node_modules/bs-platform/lib/ninja.exe
 
 
 ##### Notes #####
-
-### assemblee
-
-`assemblee` service should run fine. 
-
-You will need to fetch Parlament data if you deploy on a new environment. You can use `make` command to launch data fetching with 
-
-`make an-data-fetcher` . It will run `docker-compose run assemblee cargo run -p tricoteuses_api_assemblee_open_data_fetcher -- -c Config.toml`.
-
-Run `docker-compose up assemblee` to launch webserver. 
