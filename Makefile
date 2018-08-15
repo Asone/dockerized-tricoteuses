@@ -4,3 +4,5 @@ an-pics-fetcher :
 	docker-compose run assemblee cargo run -p tricoteuses_api_assemblee_photos_fetcher -- -c Config.toml -v
 hatvp-data-fetcher:
 	docker-compose run hatvp cargo run -p tricoteuses_api_hatvp_fetcher -- -c Config.toml -v
+wikidata-data-fetcher:
+	docker-compose run wikidata cargo run -p tricoteuses_api_wikidata_fetcher -- -c Config.toml -v

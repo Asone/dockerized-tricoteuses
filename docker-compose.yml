@@ -73,6 +73,16 @@ services:
       - ./_data:/hatvp-data/
     ports: 
       - 8002:8002
+  wikidata: 
+    build:
+      context: ./_provisioning/wikidata-api
+    environment: 
+      - ROCKET_ENV=staging
+    command: cargo run -p tricoteuses_api_wikidata -- -c Config.toml -v
+    volumes:  
+      - ./_data:/wikidata-data/
+    ports: 
+      - 8003:8003
 
 volumes:
   pgdata:
