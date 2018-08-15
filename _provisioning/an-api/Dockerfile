@@ -23,3 +23,5 @@ RUN wget --no-check-certificate https://raw.githubusercontent.com/stedolan/jq/ma
 RUN git clone https://framagit.org/tricoteuses/tricoteuses-api-assemblee.git
 
 WORKDIR tricoteuses-api-assemblee
+
+EXPOSE 8000
