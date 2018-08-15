@@ -63,6 +63,17 @@ services:
     ports: 
       - 8000:8000
 
+  hatvp: 
+    build:
+      context: ./_provisioning/hatvp-api
+    environment: 
+      - ROCKET_ENV=staging
+    command: cargo run -p tricoteuses_api_hatvp -- -c Config.toml -v 
+    volumes:  
+      - ./_data:/hatvp-data/
+    ports: 
+      - 8002:8002
+
 volumes:
   pgdata:
   _dumps:
