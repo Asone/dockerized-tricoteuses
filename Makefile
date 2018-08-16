@@ -6,3 +6,5 @@ hatvp-data-fetcher:
 	docker-compose run hatvp cargo run -p tricoteuses_api_hatvp_fetcher -- -c Config.toml -v
 wikidata-data-fetcher:
 	docker-compose run wikidata cargo run -p tricoteuses_api_wikidata_fetcher -- -c Config.toml -v
+nosdeputes-data-fetcher:
+	docker-compose run nosdeputes cargo run -p tricoteuses_api_nosdeputes_fetcher -- -c Config.toml -v
