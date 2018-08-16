@@ -73,6 +73,7 @@ services:
       - ./_data:/hatvp-data/
     ports: 
       - 8002:8002
+
   wikidata: 
     build:
       context: ./_provisioning/wikidata-api
@@ -83,6 +84,17 @@ services:
       - ./_data:/wikidata-data/
     ports: 
       - 8003:8003
+
+  nosdeputes: 
+    build:
+      context: ./_provisioning/nosdeputes-api
+    environment: 
+      - ROCKET_ENV=staging
+    command: cargo run -p tricoteuses_api_nosdeputes -- -c Config.toml -v
+    volumes:  
+      - ./_data:/wikidata-data/
+    ports: 
+      - 8001:8001
 
 volumes:
   pgdata:
