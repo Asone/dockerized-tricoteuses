@@ -52,6 +52,17 @@ services:
     ports: 
       - 8003:8003
 
+  senat: 
+    build:
+      context: ./_provisioning/senat-api
+    environment: 
+      - ROCKET_ENV=staging
+    command: cargo run -p tricoteuses_api_senat -- -c Config.toml -v
+    volumes:  
+      - ./_data:/senat-data/
+    ports: 
+      - 8004:8004
+
 volumes:
   pgdata:
   _dumps:
