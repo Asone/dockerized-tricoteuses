@@ -16,39 +16,6 @@ services:
     working_dir: /usr/src/app 
     ports:
       - 5432:5432
-  
-  daemon:
-    build: 
-      context: ./_provisioning/daemon
-    command :  bash  
-    tty: true
-    depends_on:
-      - db
-    volumes: 
-      - ./_data:/tricoteuses-daemon/data
-      - ./_dumps:/_dumps
-
-  api:
-    build:
-      context: ./_provisioning/api
-    command: bash
-    volumes: 
-      - ./_data:/tricoteuses-api/data
-    depends_on:
-      - db
-      - daemon
-
-  ui:
-    build: 
-      context: ./_provisioning/ui
-    command: bash
-    depends_on:
-      - db
-      - api
-    ports:
-      - 3000:3000
-    volumes: 
-      - ./_data/:/data
 
   assemblee: 
     build:
@@ -57,7 +24,7 @@ services:
       - ROCKET_ENV=staging
     command: cargo run -p tricoteuses_api_assemblee -- -c Config.toml -v  
     volumes:  
-      - ./_data:/assemblee-data/
+      - ./_data/assemblee-data/:/assemblee-data/
     depends_on:
       - db
     ports: 
@@ -70,9 +37,10 @@ services:
       - ROCKET_ENV=staging
     command: cargo run -p tricoteuses_api_hatvp -- -c Config.toml -v 
     volumes:  
-      - ./_data:/hatvp-data/
+      - ./_data/hatvp-data/:/hatvp-data/
     ports: 
       - 8002:8002
+
   wikidata: 
     build:
       context: ./_provisioning/wikidata-api
@@ -80,7 +48,7 @@ services:
       - ROCKET_ENV=staging
     command: cargo run -p tricoteuses_api_wikidata -- -c Config.toml -v
     volumes:  
-      - ./_data:/wikidata-data/
+      - ./_data/wikidata-data:/wikidata-data/
     ports: 
       - 8003:8003
 
