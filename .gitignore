@@ -1,4 +1,9 @@
 .env
 .DS_Store
 _dumps/*
-_data/*
+!_data/*-data/
+_data/*-data/**/*
+
+
+
+
