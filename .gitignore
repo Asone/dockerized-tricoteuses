@@ -1,4 +1,12 @@
 .env
 .DS_Store
 _dumps/*
-_data/*.*
+!_data/**/*
+_data/**/*.*
+_data/**/*.jpg
+_data/**/*.json
+_data/**/*.zip
+
+
+
+
