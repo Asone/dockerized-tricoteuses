@@ -26,4 +26,4 @@ RUN git clone https://framagit.org/tricoteuses/tricoteuses-api-senat.git
 
 WORKDIR tricoteuses-api-senat
 
-EXPOSE 8000
+EXPOSE 8004
